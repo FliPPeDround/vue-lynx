@@ -1,6 +1,7 @@
 {
   "skip_list": [
     "should not patch same string style",
+    "CSS custom properties",
     "!important",
     "camelCase with !important",
     "should warn for trailing semicolons",

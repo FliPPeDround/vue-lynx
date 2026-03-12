@@ -7,19 +7,35 @@ export default defineConfig({
     globals: true,
     setupFiles: [path.resolve(__dirname, 'setup.ts')],
     include: ['src/**/*.test.ts'],
-    alias: {
-      'vue-lynx/entry-background': path.resolve(
-        __dirname,
-        '../runtime/src/entry-background.ts',
-      ),
-      'vue-lynx': path.resolve(
-        __dirname,
-        '../runtime/src/index.ts',
-      ),
-      'vue-lynx/main-thread': path.resolve(
-        __dirname,
-        '../main-thread/src/entry-main.ts',
-      ),
-    },
+    alias: [
+      {
+        find: 'vue-lynx/entry-background',
+        replacement: path.resolve(
+          __dirname,
+          '../runtime/src/entry-background.ts',
+        ),
+      },
+      {
+        find: 'vue-lynx/main-thread',
+        replacement: path.resolve(
+          __dirname,
+          '../main-thread/src/entry-main.ts',
+        ),
+      },
+      {
+        find: 'vue-lynx/internal/ops',
+        replacement: path.resolve(
+          __dirname,
+          '../internal/src/ops.ts',
+        ),
+      },
+      {
+        find: /^vue-lynx$/,
+        replacement: path.resolve(
+          __dirname,
+          '../runtime/src/index.ts',
+        ),
+      },
+    ],
   },
 });

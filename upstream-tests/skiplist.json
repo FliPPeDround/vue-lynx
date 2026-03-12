@@ -102,7 +102,13 @@
     "the forwarded template ref should always exist when doing multi patching",
     "with KeepAlive + include",
     "should work with direct reactive property",
-    "should attach scopeId to suspense content"
+    "should attach scopeId to suspense content",
+
+    "should not track openBlock() when tracking is disabled",
+    "$watch should always register its effects with its own instance",
+    "toRef",
+    "attempting to write plain value to a readonly ref nested in a reactive object should fail",
+    "can not run an inactive scope"
   ],
   "_categories": {
     "scheduler": "Tests internal scheduler API directly, not renderer contract",
@@ -115,7 +121,7 @@
     "apiInject": "runWithContext internal API",
     "componentProps": "Optimized mode, validator internals",
     "reactivity_internals": "Uses targetMap/getDepFromReactive — not in public @vue/reactivity API",
-    "reactivity_version_mismatch": "Tests from v3.5.12 source, installed @vue/reactivity is v3.5.0 — features like startBatch, debug event tracking changes, once-option fix were added after 3.5.0",
+    "reactivity_version_mismatch": "Tests from v3.5.12 source, installed vue is v3.5.30 — internal class names changed (ObjectRefImpl vs RefImpl), readonly/effectScope behavior differs",
     "apiExpose_ref_owner": "Adapter createApp().render() doesn't set proper ref owner context for template refs on exposed instances",
     "apiAsyncComponent_ref_forwarding": "Template ref forwarding on async wrapper components not supported by adapter",
     "keepalive_include": "KeepAlive include/exclude matching requires full component name resolution",

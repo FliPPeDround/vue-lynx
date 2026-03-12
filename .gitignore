@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.rspeedy/
+upstream-tests/core/
+*.log
+.DS_Store

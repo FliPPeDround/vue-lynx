@@ -3,7 +3,12 @@
   "version": "0.1.0",
   "private": false,
   "description": "Vue 3 framework for building Lynx apps",
-  "keywords": ["vue", "lynx", "vue-lynx", "renderer"],
+  "keywords": [
+    "vue",
+    "lynx",
+    "vue-lynx",
+    "renderer"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/AimWhy/vue-lynx.git"
@@ -32,9 +37,9 @@
       "default": "./main-thread/dist/entry-main.js"
     },
     "./internal/ops": {
-      "types": "./internal/src/ops.ts",
-      "import": "./internal/src/ops.ts",
-      "default": "./internal/src/ops.ts"
+      "types": "./internal/dist/ops.d.ts",
+      "import": "./internal/dist/ops.js",
+      "default": "./internal/dist/ops.js"
     },
     "./testing-library": {
       "types": "./testing-library/dist/index.d.ts",
@@ -49,13 +54,13 @@
     "runtime/dist",
     "main-thread/dist",
     "plugin/dist",
-    "internal/src",
+    "internal/dist",
     "testing-library/dist",
     "CHANGELOG.md",
     "README.md"
   ],
   "scripts": {
-    "build": "(cd runtime && npx rslib build) && (cd main-thread && npx rslib build) && (cd plugin && npx rslib build)",
+    "build": "(cd internal && npx tsc -p tsconfig.build.json) && (cd runtime && npx rslib build) && (cd main-thread && npx rslib build) && (cd plugin && npx rslib build)",
     "dev": "(cd runtime && npx rslib build --watch) & (cd main-thread && npx rslib build --watch) & (cd plugin && npx rslib build --watch)",
     "test": "cd testing-library && pnpm test",
     "test:upstream": "cd upstream-tests && pnpm test && pnpm test:dom"
@@ -71,6 +76,7 @@
   "devDependencies": {
     "@lynx-js/type-element-api": "0.0.3",
     "@lynx-js/types": "3.7.0",
+    "@microsoft/api-extractor": "^7.57.7",
     "@rsbuild/plugin-vue": "^1.2.6",
     "@rslib/core": "^0.7.0",
     "rsbuild-plugin-publint": "0.3.4",
@@ -81,8 +87,14 @@
     "@rsbuild/plugin-vue": "^1.2.6"
   },
   "peerDependenciesMeta": {
-    "@rsbuild/core": { "optional": false },
-    "@rsbuild/plugin-vue": { "optional": false }
+    "@rsbuild/core": {
+      "optional": false
+    },
+    "@rsbuild/plugin-vue": {
+      "optional": false
+    }
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  }
 }

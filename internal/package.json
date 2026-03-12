@@ -7,10 +7,13 @@
   "type": "module",
   "exports": {
     "./ops": {
-      "types": "./src/ops.ts",
-      "import": "./src/ops.ts",
-      "default": "./src/ops.ts"
+      "types": "./dist/ops.d.ts",
+      "import": "./dist/ops.js",
+      "default": "./dist/ops.js"
     }
   },
-  "files": ["src"]
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  }
 }
