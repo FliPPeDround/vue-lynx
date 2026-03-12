@@ -41,11 +41,6 @@
       "import": "./internal/dist/ops.js",
       "default": "./internal/dist/ops.js"
     },
-    "./testing-library": {
-      "types": "./testing-library/dist/index.d.ts",
-      "import": "./testing-library/dist/index.js",
-      "default": "./testing-library/dist/index.js"
-    },
     "./package.json": "./package.json"
   },
   "main": "./runtime/dist/index.js",
@@ -55,15 +50,15 @@
     "main-thread/dist",
     "plugin/dist",
     "internal/dist",
-    "testing-library/dist",
-    "CHANGELOG.md",
+    "LICENSE",
     "README.md"
   ],
   "scripts": {
     "build": "(cd internal && npx tsc -p tsconfig.build.json) && (cd runtime && npx rslib build) && (cd main-thread && npx rslib build) && (cd plugin && npx rslib build)",
     "dev": "(cd runtime && npx rslib build --watch) & (cd main-thread && npx rslib build --watch) & (cd plugin && npx rslib build --watch)",
     "test": "cd testing-library && pnpm test",
-    "test:upstream": "cd upstream-tests && pnpm test && pnpm test:dom"
+    "test:upstream": "cd upstream-tests && pnpm test && pnpm test:dom",
+    "lint": "biome check ."
   },
   "dependencies": {
     "@lynx-js/css-extract-webpack-plugin": "^0.7.0",
@@ -74,6 +69,7 @@
     "@vue/runtime-core": "^3.5.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@lynx-js/type-element-api": "0.0.3",
     "@lynx-js/types": "3.7.0",
     "@microsoft/api-extractor": "^7.57.7",
