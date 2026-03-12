@@ -10,7 +10,7 @@
  * each operation using Lynx PAPI.
  */
 
-import { OP } from '@lynx-js/vue-internal/ops';
+import { OP } from 'vue-lynx/internal/ops';
 
 import { elements } from './element-registry.js';
 import {

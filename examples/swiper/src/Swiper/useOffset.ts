@@ -13,7 +13,7 @@ import {
   runOnBackground,
   runOnMainThread,
   useMainThreadRef,
-} from '@lynx-js/vue-runtime';
+} from 'vue-lynx';
 
 import { useAnimate } from '../utils/useAnimate.js';
 

@@ -15,7 +15,7 @@ drop as much "lepus" and "worklet" as possible.
 
 ## Source code vise
 
-→ **Tracked in `.plans/08-ops-apply-split.md`** (Step 0: `@lynx-js/vue-internal` shared package)
+→ **Tracked in `.plans/08-ops-apply-split.md`** (Step 0: `vue-lynx/internal/ops` shared package)
 
 ## Getting Started
 

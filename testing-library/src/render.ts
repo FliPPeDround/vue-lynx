@@ -13,8 +13,8 @@
 
 import type { Component } from '@vue/runtime-core';
 import { getQueriesForElement } from '@testing-library/dom';
-import { createApp, resetForTesting, nextTick } from '@lynx-js/vue-runtime';
-import type { VueLynxApp } from '@lynx-js/vue-runtime';
+import { createApp, resetForTesting, nextTick } from 'vue-lynx';
+import type { VueLynxApp } from 'vue-lynx';
 
 let currentApp: VueLynxApp | null = null;
 

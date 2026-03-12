@@ -57,7 +57,7 @@ DOM 版在 `beforeEnter` 中设置 class 后，调用 `el.offsetHeight` 强制 r
 2. 实现 `<TransitionGroup>` 组件，支持列表的 enter/leave/move 动画
 3. 复用 `@vue/runtime-core` 的 `BaseTransition` 状态机，零修改
 4. 适配 Lynx 的 CSS transition/animation 能力和事件系统
-5. 从 `@lynx-js/vue-runtime` 导出，用户体验与 Vue DOM 版一致
+5. 从 `vue-lynx` 导出，用户体验与 Vue DOM 版一致
 
 ## Non-Goals
 
@@ -491,7 +491,7 @@ describe('Transition', () => {
 </template>
 
 <script setup>
-import { ref } from '@lynx-js/vue-runtime';
+import { ref } from 'vue-lynx';
 const show = ref(true);
 const toggle = () => {
   show.value = !show.value;

@@ -8,7 +8,7 @@
 
 2. **globalThis Map hack**: `worklet-registry.ts` uses `globalThis.__vue_worklet_lepus_registrations__` as a shared channel between the BG worklet-loader (writer) and `VueMainThreadPlugin` (reader). This is fragile, breaks module isolation, and is the root cause of problem 1.
 
-**Root cause**: The MT entry only imports bootstrap code (`@lynx-js/vue-main-thread`), not user code. Webpack has no knowledge of per-entry worklet dependencies, so all registrations get pooled.
+**Root cause**: The MT entry only imports bootstrap code (`vue-lynx/main-thread`), not user code. Webpack has no knowledge of per-entry worklet dependencies, so all registrations get pooled.
 
 **React Lynx's approach**: Both BG and MT layers import the SAME user code. webpack `issuerLayer` routes files to different loaders per layer (BG: `worklet.target: 'JS'`, MT: `worklet.target: 'LEPUS'`). webpack's dependency graph naturally scopes each entry to its own registrations.
 
@@ -32,7 +32,7 @@ Registrations: globalThis Map (shared)      Registrations: webpack modules (per-
 
 ### Old Vue Architecture (flat bundle replacement)
 
-"Flat bundle" 是指 `@lynx-js/vue-main-thread` 通过 rslib 预编译成的一个自包含 JS 文件
+"Flat bundle" 是指 `vue-lynx/main-thread` 通过 rslib 预编译成的一个自包含 JS 文件
 (`main-thread-bundled.js`)。它把 `entry-main.ts` + `ops-apply.ts` + `element-registry.ts`
 等所有主线程代码打包成一坨纯 JS——没有 webpack `__webpack_require__`，没有 module wrapper。
 `VueMainThreadPlugin` 在 webpack 编译阶段用 `fs.readFileSync()` 读这个文件，拼接 worklet
@@ -185,7 +185,7 @@ export default function workletLoaderMT(
 
   const lepusResult = transformReactLynxSync(source, {
     ...sharedOpts,
-    worklet: { target: 'LEPUS', filename, runtimePkg: '@lynx-js/vue-runtime' },
+    worklet: { target: 'LEPUS', filename, runtimePkg: 'vue-lynx' },
   });
 
   // Return ONLY registerWorkletInternal(...) calls (extracted from LEPUS output)
@@ -255,8 +255,8 @@ Remove LEPUS pass and worklet-registry dependency:
     .entry(mainThreadEntry)
     .add({
       layer: LAYERS.MAIN_THREAD,
--     import: [require.resolve('@lynx-js/vue-main-thread')],
-+     import: [require.resolve('@lynx-js/vue-main-thread'), ...imports],
+-     import: [require.resolve('vue-lynx/main-thread')],
++     import: [require.resolve('vue-lynx/main-thread'), ...imports],
       filename: mainThreadName,
     })
 ```
@@ -361,7 +361,7 @@ rm packages/vue/rspeedy-plugin/src/worklet-registry.ts
 
 Remove all references in `entry.ts` (`clearLepusRegistrations`, `getAllLepusRegistrations` imports).
 
-### Step 8: Update `@lynx-js/vue-main-thread` build
+### Step 8: Update `vue-lynx/main-thread` build
 
 Currently rslib builds `entry-main.ts` twice:
 
@@ -496,20 +496,20 @@ Options:
 
 **Root cause**: Reading the built `main-thread.js` revealed that the `RuntimeGlobals.startup` fix worked (startup code was generated), but **module factories were EMPTY** — both `entry-main.js` and `ops-apply.ts` had empty function bodies `function() {}`.
 
-The `vue:worklet-mt` loader rule had `.exclude.add(/node_modules/)` to skip bootstrap packages. But in a pnpm workspace, `@lynx-js/vue-main-thread` resolves via symlink to `../../packages/vue/main-thread/dist/entry-main.js` (a real path under `packages/vue/`), NOT under `node_modules/`. So the exclude didn't catch it, and `worklet-loader-mt` returned `''` for these files (no `'main thread'` directive found).
+The `vue:worklet-mt` loader rule had `.exclude.add(/node_modules/)` to skip bootstrap packages. But in a pnpm workspace, `vue-lynx/main-thread` resolves via symlink to `../../packages/vue/main-thread/dist/entry-main.js` (a real path under `packages/vue/`), NOT under `node_modules/`. So the exclude didn't catch it, and `worklet-loader-mt` returned `''` for these files (no `'main thread'` directive found).
 
-Similarly, `@lynx-js/vue-internal` (the OP enum imported by `ops-apply.ts`) resolves to `packages/vue/shared/src/ops.ts`.
+Similarly, `vue-lynx/internal/ops` (the OP enum imported by `ops-apply.ts`) resolves to `packages/vue/shared/src/ops.ts`.
 
 **Fix**: Explicitly resolve and exclude bootstrap package directories:
 
 ```typescript
 const mainThreadPkgDir = path.dirname(
-  require.resolve('@lynx-js/vue-main-thread/package.json'),
+  require.resolve('vue-lynx/main-thread/package.json'),
 );
 let vueInternalPkgDir: string | undefined;
 try {
   vueInternalPkgDir = path.dirname(
-    require.resolve('@lynx-js/vue-internal/package.json'),
+    require.resolve('vue-lynx/internal/ops/package.json'),
   );
 } catch { /* optional */ }
 

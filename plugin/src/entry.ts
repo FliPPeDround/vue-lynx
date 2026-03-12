@@ -200,6 +200,12 @@ const DEFAULT_INTERMEDIATE = '.rspeedy';
 const _dirname = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
 
+// vue-lynx package root — the plugin lives at <pkgRoot>/plugin/dist/,
+// so we resolve two levels up from _dirname. This avoids relying on
+// a self-referencing node_modules symlink (pnpm doesn't create one
+// for the workspace root package).
+const vueLynxRoot = path.resolve(_dirname, '../..');
+
 export interface ApplyEntryOptions {
   enableCSSSelector?: boolean;
   debugInfoOutside?: boolean;
@@ -244,7 +250,7 @@ export function applyEntry(
   // Vue SFC files → extract <script> content → LEPUS transform.
   // JS/TS files → LEPUS transform directly.
   //
-  // IMPORTANT: The bootstrap packages (@lynx-js/vue-main-thread and its deps)
+  // IMPORTANT: The bootstrap packages (vue-lynx/main-thread and its deps)
   // must be excluded — they set up globalThis.renderPage/processData/etc. and
   // must execute as-is. In pnpm workspaces, these resolve to real paths under
   // packages/vue/ (not node_modules), so we exclude them explicitly.
@@ -256,20 +262,12 @@ export function applyEntry(
     if (!isLynx && !isWeb) return;
 
     // Resolve bootstrap package directories to exclude from MT loaders.
-    // entry-main.ts imports from @lynx-js/vue-main-thread (same package)
-    // and @lynx-js/vue-internal (ops enum). Both must pass through as-is.
-    const mainThreadPkgDir = path.dirname(
-      require.resolve('@lynx-js/vue-main-thread/package.json'),
-    );
-    // @lynx-js/vue-internal is a transitive dep (ops-apply.ts imports OP enum)
-    let vueInternalPkgDir: string | undefined;
-    try {
-      vueInternalPkgDir = path.dirname(
-        require.resolve('@lynx-js/vue-internal/package.json'),
-      );
-    } catch {
-      // Optional — may not exist in all setups
-    }
+    // entry-main.ts imports from vue-lynx/main-thread (same package)
+    // and vue-lynx/internal/ops (ops enum). Both must pass through as-is.
+    // These are sibling directories within the vue-lynx package root.
+    const pkgRoot = vueLynxRoot;
+    const mainThreadPkgDir = path.resolve(pkgRoot, 'main-thread');
+    const vueInternalPkgDir: string | undefined = path.resolve(pkgRoot, 'internal');
 
     // Vue SFC on MT: vue-loader processes .vue on all layers (no issuerLayer
     // constraint). This enforce:'post' rule runs worklet-loader-mt AFTER
@@ -369,7 +367,7 @@ export function applyEntry(
         .entry(mainThreadEntry)
         .add({
           layer: LAYERS.MAIN_THREAD,
-          import: [require.resolve('@lynx-js/vue-main-thread'), ...imports],
+          import: [path.resolve(vueLynxRoot, 'main-thread/dist/entry-main.js'), ...imports],
           filename: mainThreadName,
         })
         .when(enabledHMR, entry => {
@@ -394,7 +392,7 @@ export function applyEntry(
         })
         .prepend({
           layer: LAYERS.BACKGROUND,
-          import: require.resolve('@lynx-js/vue-runtime/entry-background'),
+          import: path.resolve(vueLynxRoot, 'runtime/dist/entry-background.js'),
         })
         .when(enabledHMR, entry => {
           entry.prepend({

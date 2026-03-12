@@ -120,7 +120,7 @@ Lynx supports a `display: linear` layout mode where `linear-orientation: horizon
 ### Creating the Entry Point
 
 ```ts title="SwiperEmpty/index.ts"
-import { createApp, defineComponent, h } from '@lynx-js/vue-runtime';
+import { createApp, defineComponent, h } from 'vue-lynx';
 import '../swiper.css';
 import Swiper from './Swiper.vue';
 import Page from '../Components/Page.vue';
@@ -230,7 +230,7 @@ Converting from the background thread approach to main thread requires just thre
 Main-thread functions cannot access background-thread `ref()`s. Use `useMainThreadRef` instead — it creates references that are readable and writable on the main thread:
 
 ```ts {1,4-7}
-import { useMainThreadRef } from '@lynx-js/vue-runtime';
+import { useMainThreadRef } from 'vue-lynx';
 
 // Before: const touchStartX = ref(0);
 const containerRef = useMainThreadRef<unknown>(null);
@@ -324,7 +324,7 @@ Combining the above changes, here is the complete main-thread touch handling ver
 
 ```vue title="SwiperMTS/Swiper.vue"
 <script setup lang="ts">
-import { useMainThreadRef } from '@lynx-js/vue-runtime';
+import { useMainThreadRef } from 'vue-lynx';
 import SwiperItem from '../Components/SwiperItem.vue';
 
 declare const SystemInfo: { pixelWidth: number; pixelRatio: number };
@@ -414,7 +414,7 @@ Currently all logic lives in a single component. As we add features (animation, 
 Extract the `containerRef` and style update logic:
 
 ```ts title="Swiper/useUpdateSwiperStyle.ts"
-import { useMainThreadRef } from '@lynx-js/vue-runtime';
+import { useMainThreadRef } from 'vue-lynx';
 
 export function useUpdateSwiperStyle() {
   const containerRef = useMainThreadRef<unknown>(null);
@@ -442,7 +442,7 @@ export function useUpdateSwiperStyle() {
 Extract the core touch event logic into `useOffset`, using callbacks for decoupling:
 
 ```ts title="Swiper/useOffset.ts"
-import { useMainThreadRef } from '@lynx-js/vue-runtime';
+import { useMainThreadRef } from 'vue-lynx';
 
 export function useOffset({
   onOffsetUpdate,
@@ -555,7 +555,7 @@ On release, the swiper should automatically slide to the nearest full page. This
 ### useAnimate — RAF Animation Composable
 
 ```ts title="utils/useAnimate.ts"
-import { useMainThreadRef } from '@lynx-js/vue-runtime';
+import { useMainThreadRef } from 'vue-lynx';
 
 export interface AnimationOptions {
   from: number;
@@ -639,7 +639,7 @@ Note: the `easing` function also needs the `'main thread'` directive because it 
 In `handleTouchEnd`, calculate the nearest page position and start the animation:
 
 ```ts title="Swiper/useOffset.ts" {5,14-15,18-21,33-43}
-import { useMainThreadRef } from '@lynx-js/vue-runtime';
+import { useMainThreadRef } from 'vue-lynx';
 import { useAnimate } from '../utils/useAnimate';
 
 export function useOffset({
@@ -724,7 +724,7 @@ Main thread script and background thread script run in **completely separate run
 When the user drags images, `updateOffset` on the main thread calculates the current page index. We need to sync this index to the background thread's indicator state:
 
 ```ts title="Swiper/useOffset.ts" {1,8,10,23-27}
-import { runOnBackground, useMainThreadRef } from '@lynx-js/vue-runtime';
+import { runOnBackground, useMainThreadRef } from 'vue-lynx';
 
 export function useOffset({
   onOffsetUpdate,
@@ -780,7 +780,7 @@ import {
   runOnBackground,
   runOnMainThread,
   useMainThreadRef,
-} from '@lynx-js/vue-runtime';
+} from 'vue-lynx';
 
 // New: background-thread function, called by Indicator's tap callback
 function updateIndex(index: number) {

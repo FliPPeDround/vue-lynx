@@ -177,7 +177,7 @@ Types: Define minimal compatible interfaces in the same file (or a shared types 
 The `ShadowElement` is already exported. No new exports needed for the implementation itself. Users type their refs with `NodesRef` from `@lynx-js/types` (same as React):
 
 ```typescript
-import { useTemplateRef } from '@lynx-js/vue-runtime';
+import { useTemplateRef } from 'vue-lynx';
 import type { NodesRef } from '@lynx-js/types';
 
 const scrollRef = useTemplateRef<NodesRef>('scroll');
@@ -209,8 +209,8 @@ In the testing environment, `lynx.createSelectorQuery()` may need a stub.
 
 ```vue
 <script setup lang="ts">
-import { onMounted, useTemplateRef } from '@lynx-js/vue-runtime';
-import { nextTick } from '@lynx-js/vue-runtime';
+import { onMounted, useTemplateRef } from 'vue-lynx';
+import { nextTick } from 'vue-lynx';
 import type { NodesRef } from '@lynx-js/types';
 
 const scrollRef = useTemplateRef<NodesRef>('scroll');

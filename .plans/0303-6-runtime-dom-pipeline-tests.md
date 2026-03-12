@@ -105,8 +105,8 @@ Key detail: For patchProp, the bridge must handle the key format differences:
 Vitest setup file for runtime-dom tests:
 
 1. Create `LynxTestingEnv` with jsdom
-2. Wire MT globals (import `@lynx-js/vue-main-thread`)
-3. Wire BG globals (import `@lynx-js/vue-runtime/entry-background`)
+2. Wire MT globals (import `vue-lynx/main-thread`)
+3. Wire BG globals (import `vue-lynx/entry-background`)
 4. Override `document.createElement` → `createBridgedElement`
 5. Set `globalThis.patchProp` → `bridgedPatchProp`
 6. `beforeEach`: resetBridge + clear jsdom body + re-create page root

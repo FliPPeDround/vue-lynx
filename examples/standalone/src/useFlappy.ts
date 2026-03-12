@@ -1,4 +1,4 @@
-import { onUnmounted, ref } from '@lynx-js/vue-runtime';
+import { onUnmounted, ref } from 'vue-lynx';
 
 import { createFlappy } from './lib/flappy.js';
 import type { FlappyOptions } from './lib/flappy.js';

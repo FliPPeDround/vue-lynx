@@ -5,7 +5,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { h, defineComponent, ref, nextTick } from '@lynx-js/vue-runtime';
+import { h, defineComponent, ref, nextTick } from 'vue-lynx';
 import { render, fireEvent } from '../index.js';
 
 describe('events', () => {

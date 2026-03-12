@@ -12,7 +12,7 @@
  * The 'main thread' directive is processed by the SWC worklet transform.
  */
 
-import { createApp } from '@lynx-js/vue-runtime';
+import { createApp } from 'vue-lynx';
 
 import App from './App.vue';
 

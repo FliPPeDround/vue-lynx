@@ -32,7 +32,7 @@ if (typeof (globalThis as any).registerWorkletInternal === 'undefined') {
 }
 
 // The main-thread entry-main.ts sets globalThis.renderPage, vuePatchUpdate, etc.
-await import('@lynx-js/vue-main-thread');
+await import('vue-lynx/main-thread');
 
 // Capture the functions set on globalThis by entry-main.ts
 const mainThreadFns = {
@@ -52,7 +52,7 @@ Object.assign(mtGlobal, mainThreadFns);
 lynxTestingEnv.switchToBackgroundThread();
 
 // Import entry-background which sets publishEvent on lynxCoreInject.tt and globalThis.
-await import('@lynx-js/vue-runtime/entry-background');
+await import('vue-lynx/entry-background');
 
 // Capture the publishEvent function reference for re-wiring after resets.
 const publishEventFn = (globalThis as any).publishEvent;

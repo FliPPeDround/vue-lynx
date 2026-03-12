@@ -1,6 +1,6 @@
 {
-  "name": "vue",
-  "version": "0.0.0",
+  "name": "vue-lynx-example-standalone",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,16 +9,13 @@
     "preview": "rspeedy preview"
   },
   "dependencies": {
-    "@lynx-js/vue-runtime": "workspace:*"
+    "vue-lynx": "workspace:*"
   },
   "devDependencies": {
     "@lynx-js/qrcode-rsbuild-plugin": "workspace:*",
     "@lynx-js/rspeedy": "workspace:*",
-    "@lynx-js/vue-rsbuild-plugin": "workspace:*",
     "@rsbuild/plugin-vue": "^1.2.6",
     "typescript": "~5.9.3"
   },
-  "engines": {
-    "node": ">=18"
-  }
+  "engines": { "node": ">=18" }
 }

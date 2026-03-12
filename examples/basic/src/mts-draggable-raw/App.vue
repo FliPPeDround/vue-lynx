@@ -15,7 +15,7 @@
 -->
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useMainThreadRef } from '@lynx-js/vue-runtime'
+import { useMainThreadRef } from 'vue-lynx'
 
 import MainThreadDraggable from './MainThreadDraggable.vue'
 import BackgroundDraggable from './BackgroundDraggable.vue'

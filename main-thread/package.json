@@ -1,49 +1,12 @@
 {
-  "name": "@lynx-js/vue-main-thread",
+  "name": "vue-lynx-main-thread",
   "version": "0.1.0",
-  "private": false,
-  "description": "Vue-Lynx Main Thread PAPI executor",
-  "keywords": [
-    "vue",
-    "lynx",
-    "vue-lynx",
-    "main-thread"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lynx-family/lynx-stack.git",
-    "directory": "packages/vue/main-thread"
-  },
+  "private": true,
+  "description": "Vue-Lynx Main Thread PAPI executor (internal build target)",
   "license": "Apache-2.0",
   "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/entry-main.d.ts",
-      "import": "./dist/entry-main.js",
-      "default": "./dist/entry-main.js"
-    },
-    "./package.json": "./package.json"
-  },
-  "main": "./dist/entry-main.js",
-  "types": "./dist/entry-main.d.ts",
-  "files": [
-    "dist",
-    "CHANGELOG.md",
-    "README.md"
-  ],
   "scripts": {
     "build": "rslib build",
     "dev": "rslib build --watch"
-  },
-  "dependencies": {
-    "@lynx-js/vue-internal": "workspace:*"
-  },
-  "devDependencies": {
-    "@lynx-js/type-element-api": "0.0.3",
-    "@rslib/core": "^0.7.0",
-    "typescript": "^5.0.0"
-  },
-  "engines": {
-    "node": ">=18"
   }
 }

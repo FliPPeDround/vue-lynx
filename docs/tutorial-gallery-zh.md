@@ -18,7 +18,7 @@
 
 ```ts title="lynx.config.ts"
 import { defineConfig } from '@lynx-js/rspeedy';
-import { pluginVueLynx } from '@lynx-js/vue-rsbuild-plugin';
+import { pluginVueLynx } from 'vue-lynx/plugin';
 
 export default defineConfig({
   source: {
@@ -194,7 +194,7 @@ defineProps<{
 
 ```ts title="ImageCard/index.ts" {6}
 import '../gallery.css';
-import { createApp, defineComponent, h } from '@lynx-js/vue-runtime';
+import { createApp, defineComponent, h } from 'vue-lynx';
 import ImageCard from './ImageCard.vue';
 import { furnituresPicturesSubArray } from '../Pictures/furnituresPictures';
 
@@ -226,7 +226,7 @@ app.mount();
 
 ```vue title="Components/LikeIcon.vue" {4,7-9,13-15}
 <script setup lang="ts">
-import { ref } from '@lynx-js/vue-runtime';
+import { ref } from 'vue-lynx';
 
 import redHeart from '../Pictures/redHeart.png';
 import whiteHeart from '../Pictures/whiteHeart.png';
@@ -363,7 +363,7 @@ import LikeImageCard from '../Components/LikeImageCard.vue';
 
 ```vue title="GalleryAutoScroll/Gallery.vue" {1,12-22}
 <script setup lang="ts">
-import { onMounted, nextTick } from '@lynx-js/vue-runtime';
+import { onMounted, nextTick } from 'vue-lynx';
 import { furnituresPictures } from '../Pictures/furnituresPictures';
 import { calculateEstimatedSize } from '../utils';
 import LikeImageCard from '../Components/LikeImageCard.vue';
@@ -411,7 +411,7 @@ onMounted(() => {
 
 ```vue title="GalleryScrollbar/NiceScrollbar.vue" {7-11,13}
 <script setup lang="ts">
-import { ref } from '@lynx-js/vue-runtime';
+import { ref } from 'vue-lynx';
 
 declare const SystemInfo: { pixelHeight: number; pixelRatio: number };
 
@@ -443,7 +443,7 @@ defineExpose({ adjustScrollbar });
 
 ```vue title="GalleryScrollbar/Gallery.vue" {12,19,21}
 <script setup lang="ts">
-import { ref, onMounted, nextTick } from '@lynx-js/vue-runtime';
+import { ref, onMounted, nextTick } from 'vue-lynx';
 import LikeImageCard from '../Components/LikeImageCard.vue';
 import NiceScrollbar from './NiceScrollbar.vue';
 
@@ -511,7 +511,7 @@ function onScroll(
 
 ```vue title="ScrollbarCompare/NiceScrollbarMTS.vue" {5,10}
 <script setup lang="ts">
-import type { MainThreadRef } from '@lynx-js/vue-runtime';
+import type { MainThreadRef } from 'vue-lynx';
 
 defineProps<{
   thumbRef: MainThreadRef;
@@ -543,7 +543,7 @@ import {
   onMounted,
   nextTick,
   useMainThreadRef,
-} from '@lynx-js/vue-runtime';
+} from 'vue-lynx';
 import NiceScrollbar from './NiceScrollbar.vue';
 import NiceScrollbarMTS from './NiceScrollbarMTS.vue';
 
@@ -605,7 +605,7 @@ Vue 中 MTS 的关键概念：
 
 ```vue title="GalleryComplete/NiceScrollbarMTS.vue"
 <script setup lang="ts">
-import type { MainThreadRef } from '@lynx-js/vue-runtime';
+import type { MainThreadRef } from 'vue-lynx';
 
 defineProps<{
   thumbRef: MainThreadRef;
@@ -624,7 +624,7 @@ defineProps<{
 
 ```vue title="GalleryComplete/Gallery.vue" {9,15-19,22,28}
 <script setup lang="ts">
-import { onMounted, useMainThreadRef } from '@lynx-js/vue-runtime';
+import { onMounted, useMainThreadRef } from 'vue-lynx';
 import { furnituresPictures } from '../Pictures/furnituresPictures';
 import { calculateEstimatedSize } from '../utils';
 import LikeImageCard from '../Components/LikeImageCard.vue';

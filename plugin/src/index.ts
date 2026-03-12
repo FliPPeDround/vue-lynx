@@ -12,7 +12,7 @@
  * ```ts
  * // lynx.config.ts
  * import { defineConfig } from '@lynx-js/rspeedy'
- * import { pluginVueLynx } from '@lynx-js/vue-rsbuild-plugin'
+ * import { pluginVueLynx } from 'vue-lynx/plugin'
  *
  * export default defineConfig({
  *   plugins: [pluginVueLynx()],
@@ -131,9 +131,9 @@ export function pluginVueLynx(
         });
 
         api.modifyBundlerChain((chain) => {
-          // "vue" → "@lynx-js/vue-runtime" ensures template compiler output
+          // "vue" → "vue-lynx" ensures template compiler output
           // imports from the same module instance (singleton shared state)
-          chain.resolve.alias.set('vue', '@lynx-js/vue-runtime');
+          chain.resolve.alias.set('vue', 'vue-lynx');
         });
 
         // NOTE: vue-loader runs on ALL layers (no issuerLayer constraint).

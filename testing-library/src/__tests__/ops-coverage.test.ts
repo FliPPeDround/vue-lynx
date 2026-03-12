@@ -15,7 +15,7 @@ import {
   nextTick,
   useMainThreadRef,
   ShadowElement,
-} from '@lynx-js/vue-runtime';
+} from 'vue-lynx';
 import { render } from '../index.js';
 
 // ---------------------------------------------------------------------------

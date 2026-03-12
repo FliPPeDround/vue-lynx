@@ -11,7 +11,7 @@
   Tutorial step: gallery-like-card
 -->
 <script setup lang="ts">
-import { ref } from '@lynx-js/vue-runtime';
+import { ref } from 'vue-lynx';
 
 import redHeart from '../Pictures/redHeart.png';
 import whiteHeart from '../Pictures/whiteHeart.png';

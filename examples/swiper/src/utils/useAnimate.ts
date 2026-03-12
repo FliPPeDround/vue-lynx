@@ -9,7 +9,7 @@
  * All MTS function bodies are identical to the React version.
  */
 
-import { useMainThreadRef } from '@lynx-js/vue-runtime';
+import { useMainThreadRef } from 'vue-lynx';
 
 export interface AnimationOptions {
   from: number;

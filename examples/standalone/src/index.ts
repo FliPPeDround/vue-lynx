@@ -1,4 +1,4 @@
-import { createApp } from '@lynx-js/vue-runtime';
+import { createApp } from 'vue-lynx';
 
 import App from './App.vue';
 

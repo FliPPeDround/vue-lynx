@@ -9,7 +9,7 @@
  * MTS function body is identical to the React version.
  */
 
-import { useMainThreadRef } from '@lynx-js/vue-runtime';
+import { useMainThreadRef } from 'vue-lynx';
 
 export function useUpdateSwiperStyle() {
   const containerRef = useMainThreadRef<unknown>(null);

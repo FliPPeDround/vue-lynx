@@ -41,5 +41,5 @@ When investigating runtime errors in Lynx bundles:
 ### Common Gotchas
 
 - `worklet-loader-mt` must emit `export default {};` for vue script sub-modules (`?vue&type=script`) to satisfy the `experimentalInlineMatchResource` proxy re-export.
-- Bootstrap packages (`@lynx-js/vue-main-thread`, `@lynx-js/vue-internal`) must be excluded from MT loaders — in pnpm workspaces they resolve via symlinks (not under `node_modules/`), so `/node_modules/` exclude alone is insufficient.
+- Bootstrap packages (`vue-lynx/main-thread`, `vue-lynx/internal/ops`) must be excluded from MT loaders — in pnpm workspaces they resolve via symlinks (not under `node_modules/`), so `/node_modules/` exclude alone is insufficient.
 - `VueMarkMainThreadPlugin` must add `RuntimeGlobals.startup` for MT entry chunks — without it, `chunkLoading: 'lynx'` prevents module factory execution.

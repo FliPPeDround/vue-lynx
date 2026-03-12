@@ -1,5 +1,5 @@
 {
-  "name": "@lynx-js/vue-testing-library",
+  "name": "vue-lynx-testing-library",
   "version": "0.1.0",
   "private": true,
   "description": "Testing utilities for Vue 3 Lynx apps",
@@ -10,8 +10,7 @@
   },
   "devDependencies": {
     "@lynx-js/testing-environment": "workspace:*",
-    "@lynx-js/vue-main-thread": "workspace:*",
-    "@lynx-js/vue-runtime": "workspace:*",
+    "vue-lynx": "workspace:*",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@vue/runtime-core": "^3.5.0",

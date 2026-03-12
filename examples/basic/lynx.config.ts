@@ -3,7 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 
 import { defineConfig } from '@lynx-js/rspeedy';
-import { pluginVueLynx } from '@lynx-js/vue-rsbuild-plugin';
+import { pluginVueLynx } from 'vue-lynx/plugin';
 
 export default defineConfig({
   environments: {

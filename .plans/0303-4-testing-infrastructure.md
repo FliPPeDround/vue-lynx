@@ -11,7 +11,7 @@ The Vue 3 Lynx implementation (`packages/vue/`) currently has no automated tests
 
 ## Phase 1: E2E Pipeline Testing Library
 
-**Package**: `packages/vue/testing-library/` (`@lynx-js/vue-testing-library`, private)
+**Package**: `packages/vue/testing-library/` (`vue-lynx/testing-library`, private)
 
 Reuses `@lynx-js/testing-environment` (framework-agnostic) with a thin Vue-specific layer.
 
@@ -31,9 +31,9 @@ Reuses `@lynx-js/testing-environment` (framework-agnostic) with a thin Vue-speci
 
 ### 1.2 New files in `packages/vue/testing-library/`
 
-**`package.json`** — private, devDeps: `@lynx-js/testing-environment`, `@lynx-js/vue-runtime`, `@lynx-js/vue-main-thread`, `@testing-library/dom`, `jsdom`, `vitest`, `vue`
+**`package.json`** — private, devDeps: `@lynx-js/testing-environment`, `vue-lynx`, `vue-lynx/main-thread`, `@testing-library/dom`, `jsdom`, `vitest`, `vue`
 
-**`vitest.config.ts`** — Alias `@lynx-js/vue-runtime` → `../runtime/src/index.ts` (source, so `declare var lynx` resolves to `globalThis.lynx` set by LynxTestingEnv). Same for `@lynx-js/vue-main-thread` → `../main-thread/src/entry-main.ts`. Environment: `jsdom`. Setup file: `./setup.ts`.
+**`vitest.config.ts`** — Alias `vue-lynx` → `../runtime/src/index.ts` (source, so `declare var lynx` resolves to `globalThis.lynx` set by LynxTestingEnv). Same for `vue-lynx/main-thread` → `../main-thread/src/entry-main.ts`. Environment: `jsdom`. Setup file: `./setup.ts`.
 
 **`setup.ts`** — Core wiring:
 
@@ -73,7 +73,7 @@ Reuses `@lynx-js/testing-environment` (framework-agnostic) with a thin Vue-speci
 
 ## Phase 2: Vue Upstream Tests
 
-**Package**: `packages/vue/vue-upstream-tests/` (`@lynx-js/vue-upstream-tests`, private)
+**Package**: `packages/vue/vue-upstream-tests/` (`vue-lynx/upstream-tests`, private)
 
 ### 2.1 Git submodule
 

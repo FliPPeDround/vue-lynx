@@ -7,7 +7,7 @@
  *
  * Validates the full SFC pipeline:
  *   .vue file → @vue/compiler-dom → template render function
- *   → @lynx-js/vue-runtime nodeOps → ops buffer → callLepusMethod
+ *   → vue-lynx nodeOps → ops buffer → callLepusMethod
  *   → Main Thread applyOps → PAPI → native render
  *
  * SFC features exercised (see App.vue / Counter.vue):
@@ -21,7 +21,7 @@
  *   - child component reference
  */
 
-import { createApp } from '@lynx-js/vue-runtime';
+import { createApp } from 'vue-lynx';
 
 import App from './App.vue';
 

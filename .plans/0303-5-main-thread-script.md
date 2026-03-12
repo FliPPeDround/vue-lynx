@@ -53,7 +53,7 @@ Main-thread functions live in a **separate `<script>` block** — Vue-idiomatic,
 ```vue
 <script setup>
 import { ref } from 'vue';
-import { useMainThreadRef } from '@lynx-js/vue-runtime';
+import { useMainThreadRef } from 'vue-lynx';
 
 const count = ref(0);
 const elRef = useMainThreadRef(null);
@@ -105,7 +105,7 @@ Vue's `:` (v-bind) evaluates the expression and passes the JS value to `patchPro
 **Option A: `useMainThreadRef` (explicit, general-purpose)**
 
 ```typescript
-import { useMainThreadRef } from '@lynx-js/vue-runtime';
+import { useMainThreadRef } from 'vue-lynx';
 
 // Element reference
 const elRef = useMainThreadRef<ViewElement>(null);
@@ -124,7 +124,7 @@ scrollY.value = event.detail.scrollTop; // writable on MT
 
 ```typescript
 import { useTemplateRef } from 'vue';
-import { useMainThreadHandle } from '@lynx-js/vue-runtime';
+import { useMainThreadHandle } from 'vue-lynx';
 
 const el = useTemplateRef<ShadowElement>('myEl');
 const elHandle = useMainThreadHandle(el); // auto-derives from template ref

@@ -12,8 +12,8 @@
   Tutorial step: gallery-scrollbar
 -->
 <script setup lang="ts">
-import { ref, onMounted, nextTick, useTemplateRef } from '@lynx-js/vue-runtime';
-import type { ShadowElement } from '@lynx-js/vue-runtime';
+import { ref, onMounted, nextTick, useTemplateRef } from 'vue-lynx';
+import type { ShadowElement } from 'vue-lynx';
 
 import { furnituresPictures } from '../Pictures/furnituresPictures';
 import { calculateEstimatedSize } from '../utils';

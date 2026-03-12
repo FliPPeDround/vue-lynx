@@ -12,8 +12,8 @@
   Tutorial step: gallery-autoscroll
 -->
 <script setup lang="ts">
-import { onMounted, nextTick, useTemplateRef } from '@lynx-js/vue-runtime';
-import type { ShadowElement } from '@lynx-js/vue-runtime';
+import { onMounted, nextTick, useTemplateRef } from 'vue-lynx';
+import type { ShadowElement } from 'vue-lynx';
 
 import { furnituresPictures } from '../Pictures/furnituresPictures';
 import { calculateEstimatedSize } from '../utils';

@@ -4,7 +4,7 @@
   'main thread' directive functions, eliminating cross-thread round-trips.
 -->
 <script setup lang="ts">
-import { useMainThreadRef } from '@lynx-js/vue-runtime';
+import { useMainThreadRef } from 'vue-lynx';
 import SwiperItem from '../Components/SwiperItem.vue';
 
 declare const SystemInfo: { pixelWidth: number; pixelRatio: number };

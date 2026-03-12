@@ -12,8 +12,8 @@
   Tutorial step: gallery-complete
 -->
 <script setup lang="ts">
-import { onMounted, nextTick, useMainThreadRef, useTemplateRef } from '@lynx-js/vue-runtime';
-import type { ShadowElement } from '@lynx-js/vue-runtime';
+import { onMounted, nextTick, useMainThreadRef, useTemplateRef } from 'vue-lynx';
+import type { ShadowElement } from 'vue-lynx';
 
 import { furnituresPictures } from '../Pictures/furnituresPictures';
 import { calculateEstimatedSize } from '../utils';

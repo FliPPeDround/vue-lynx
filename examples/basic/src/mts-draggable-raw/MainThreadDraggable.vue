@@ -9,7 +9,7 @@
   setStyleProperty("transform", ...) with zero latency.
 -->
 <script setup lang="ts">
-import type { MainThreadRef } from '@lynx-js/vue-runtime'
+import type { MainThreadRef } from 'vue-lynx'
 
 defineProps<{
   size: number

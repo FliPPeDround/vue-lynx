@@ -9,7 +9,7 @@
  * See mts-draggable/ for the transform-based version using 'main thread' directive.
  */
 
-import { createApp } from '@lynx-js/vue-runtime';
+import { createApp } from 'vue-lynx';
 
 import App from './App.vue';
 

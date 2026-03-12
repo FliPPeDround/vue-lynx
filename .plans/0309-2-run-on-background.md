@@ -63,7 +63,7 @@ export function transformToWorklet(obj: (...args: any[]) => any): JsFnHandle {
 }
 ```
 
-The SWC JS pass generates `import { transformToWorklet } from "@lynx-js/vue-runtime"` — so this must be exported from `index.ts`.
+The SWC JS pass generates `import { transformToWorklet } from "vue-lynx"` — so this must be exported from `index.ts`.
 
 ### Step 3: BG-side worklet registration + event listener
 
@@ -282,7 +282,7 @@ Changes:
 - Delete `bgOffset`, `bgTouchStartX`, `bgTouchStartOffset` variables
 - Delete `onBGTouchStart`, `onBGTouchMove`, `onBGTouchEnd` functions
 - Delete `@touchstart/@touchmove/@touchend` template bindings
-- Add `import { runOnBackground } from '@lynx-js/vue-runtime'`
+- Add `import { runOnBackground } from 'vue-lynx'`
 - In MT `mtUpdateOffset`, add: `runOnBackground(updateCurrentIndex)(index)` to sync indicator
 - Add BG function: `function updateCurrentIndex(index: number) { currentIndex.value = index; }`
 

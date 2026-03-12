@@ -11,7 +11,7 @@
   Tutorial step: gallery-scrollbar-compare
 -->
 <script setup lang="ts">
-import { ref } from '@lynx-js/vue-runtime';
+import { ref } from 'vue-lynx';
 
 declare const SystemInfo: { pixelHeight: number; pixelRatio: number };
 

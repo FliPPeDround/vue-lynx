@@ -3,12 +3,12 @@
 // LICENSE file in the root directory of this source tree.
 
 /**
- * @lynx-js/vue-runtime
+ * vue-lynx
  *
  * Vue 3 custom renderer for Lynx's Background Thread.
  *
  * Usage:
- *   import { createApp, ref, h, defineComponent } from '@lynx-js/vue-runtime'
+ *   import { createApp, ref, h, defineComponent } from 'vue-lynx'
  *
  * This module re-exports Vue's reactivity / component APIs and provides a
  * custom createApp() that mounts into a ShadowElement tree and flushes DOM

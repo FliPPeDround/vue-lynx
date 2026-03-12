@@ -5,7 +5,7 @@
 /**
  * Background Thread bootstrap entry.
  *
- * Injected by @lynx-js/vue-rsbuild-plugin as the first import of every
+ * Injected by vue-lynx/plugin as the first import of every
  * background bundle.  Sets up event routing so that native-dispatched events
  * reach our Vue handlers.
  *

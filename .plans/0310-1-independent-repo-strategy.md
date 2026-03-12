@@ -45,18 +45,18 @@ All commits preserved with original messages, authors, and dates.
 ### Dependency graph on lynx-stack
 
 ```
-@lynx-js/vue-runtime
+vue-lynx
   └─ @lynx-js/types (type-only, published to npm)
 
-@lynx-js/vue-main-thread
+vue-lynx/main-thread
   └─ @lynx-js/type-element-api (type-only, published to npm)
 
-@lynx-js/vue-rsbuild-plugin
+vue-lynx/plugin
   ├─ @lynx-js/template-webpack-plugin (published to npm)
   ├─ @lynx-js/runtime-wrapper-webpack-plugin (published to npm)
   └─ @lynx-js/react (only worklet-runtime portion)
 
-@lynx-js/vue-internal
+vue-lynx/internal/ops
   └─ (no @lynx-js deps — pure shared code)
 ```
 
@@ -129,12 +129,12 @@ import { OP } from 'vue-lynx/ops';
 
 | Current (`@lynx-js/`)          | → Subpath              | Notes                   |
 | ------------------------------ | ---------------------- | ----------------------- |
-| `@lynx-js/vue-runtime`         | `vue-lynx` (root)      | Main entry              |
-| `@lynx-js/vue-rsbuild-plugin`  | `vue-lynx/plugin`      | Build plugin            |
-| `@lynx-js/vue-main-thread`     | `vue-lynx/main-thread` | Internal                |
-| `@lynx-js/vue-internal`        | `vue-lynx/ops`         | Shared OP enum          |
-| `@lynx-js/vue-testing-library` | `vue-lynx/testing`     | Test utils              |
-| `@lynx-js/vue-upstream-tests`  | (not exported)         | Dev-only, stays in repo |
+| `vue-lynx`         | `vue-lynx` (root)      | Main entry              |
+| `vue-lynx/plugin`  | `vue-lynx/plugin`      | Build plugin            |
+| `vue-lynx/main-thread`     | `vue-lynx/main-thread` | Internal                |
+| `vue-lynx/internal/ops`        | `vue-lynx/ops`         | Shared OP enum          |
+| `vue-lynx/testing-library` | `vue-lynx/testing`     | Test utils              |
+| `vue-lynx/upstream-tests`  | (not exported)         | Dev-only, stays in repo |
 
 ### Design goals
 

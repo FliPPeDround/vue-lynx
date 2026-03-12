@@ -228,7 +228,7 @@ Everything else — the entire reactivity system, component model, template comp
 
 ## The build pipeline
 
-The `@lynx-js/vue-rsbuild-plugin` handles the dual-thread split:
+The `vue-lynx/plugin` handles the dual-thread split:
 
 ```
 User entry (index.ts + App.vue)
@@ -246,7 +246,7 @@ From the developer's perspective, it's just:
 
 ```ts
 // lynx.config.ts
-import { pluginVueLynx } from '@lynx-js/vue-rsbuild-plugin';
+import { pluginVueLynx } from 'vue-lynx/plugin';
 
 export default defineConfig({
   source: { entry: { todomvc: './src/todomvc/index.ts' } },

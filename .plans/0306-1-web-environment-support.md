@@ -14,7 +14,7 @@ by detecting `isWeb` alongside `isLynx` and applying `WebEncodePlugin` (from
 core handles all web-specific plumbing (target setting, HMR, web preview
 middleware at `/__web_preview`).
 
-The Vue plugin (`@lynx-js/vue-rsbuild-plugin`) currently returns early or skips
+The Vue plugin (`vue-lynx/plugin`) currently returns early or skips
 processing for any non-lynx environment, meaning `environments: { web: {} }`
 produces empty/broken output.
 

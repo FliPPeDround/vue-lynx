@@ -1,5 +1,5 @@
 /**
- * @lynx-js/vue-testing-library
+ * vue-lynx/testing-library
  *
  * Testing utilities for Vue 3 Lynx apps. Provides render(), cleanup(),
  * fireEvent, and re-exports from @testing-library/dom.

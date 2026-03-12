@@ -12,8 +12,8 @@
   Tutorial step: gallery-scrollbar-compare
 -->
 <script setup lang="ts">
-import { ref, onMounted, nextTick, useMainThreadRef, useTemplateRef } from '@lynx-js/vue-runtime';
-import type { ShadowElement } from '@lynx-js/vue-runtime';
+import { ref, onMounted, nextTick, useMainThreadRef, useTemplateRef } from 'vue-lynx';
+import type { ShadowElement } from 'vue-lynx';
 
 import { furnituresPictures } from '../Pictures/furnituresPictures';
 import { calculateEstimatedSize } from '../utils';

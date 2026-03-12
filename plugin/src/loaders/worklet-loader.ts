@@ -49,7 +49,7 @@ export default function workletLoader(
     worklet: {
       target: 'JS',
       filename,
-      runtimePkg: '@lynx-js/vue-runtime',
+      runtimePkg: 'vue-lynx',
     },
   });
 

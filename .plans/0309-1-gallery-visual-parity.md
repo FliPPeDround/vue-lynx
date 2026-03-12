@@ -159,7 +159,7 @@ Replace unicode hearts with imported PNG images. Add ripple circle views. Make t
 
 ```vue
 <script setup lang="ts">
-import { ref } from '@lynx-js/vue-runtime';
+import { ref } from 'vue-lynx';
 import redHeart from '../Pictures/redHeart.png';
 import whiteHeart from '../Pictures/whiteHeart.png';
 const isLiked = ref(false);
@@ -258,7 +258,7 @@ Replace `.scrollbar-track`/`.scrollbar-thumb` with `.scrollbar`/`.scrollbar-effe
 
 ```vue
 <script setup lang="ts">
-import { ref } from '@lynx-js/vue-runtime';
+import { ref } from 'vue-lynx';
 declare const SystemInfo: { pixelHeight: number; pixelRatio: number };
 const scrollbarHeight = ref(0);
 const scrollbarTop = ref(0);

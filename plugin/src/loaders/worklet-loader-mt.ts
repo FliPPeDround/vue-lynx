@@ -70,7 +70,7 @@ export default function workletLoaderMT(
       worklet: {
         target: 'LEPUS',
         filename: resourcePath,
-        runtimePkg: '@lynx-js/vue-runtime',
+        runtimePkg: 'vue-lynx',
       },
     });
 
@@ -120,7 +120,7 @@ export default function workletLoaderMT(
     worklet: {
       target: 'LEPUS',
       filename,
-      runtimePkg: '@lynx-js/vue-runtime',
+      runtimePkg: 'vue-lynx',
     },
   });
 

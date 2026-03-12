@@ -17,7 +17,7 @@ import {
   nodeOps,
   takeOps,
   resetForTesting,
-} from '@lynx-js/vue-runtime';
+} from 'vue-lynx';
 import { isBooleanAttr, includeBooleanAttr } from '@vue/shared';
 
 // ---------------------------------------------------------------------------
@@ -317,7 +317,7 @@ export {
   vModelRadio,
   withModifiers,
   withKeys,
-} from '@lynx-js/vue-runtime';
+} from 'vue-lynx';
 
 /**
  * Stub render() — Vue runtime-dom tests that call render(h(...), container)

@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { h, defineComponent } from '@lynx-js/vue-runtime';
+import { h, defineComponent } from 'vue-lynx';
 import { render } from '../index.js';
 
 describe('render', () => {

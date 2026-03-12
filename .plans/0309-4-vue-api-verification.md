@@ -1,7 +1,7 @@
 # Future Work: Vue API Export Verification Plan
 
 **Created**: 2026-03-09
-**Context**: `@lynx-js/vue-runtime` re-exports ~80 Vue 3 public APIs. Most are pure JS
+**Context**: `vue-lynx` re-exports ~80 Vue 3 public APIs. Most are pure JS
 (reactivity, scope, utilities) and trivially safe. This plan tracks the APIs that need
 targeted verification because they interact with the renderer, the dual-thread model,
 or Lynx's native element lifecycle.

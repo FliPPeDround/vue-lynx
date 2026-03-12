@@ -3,7 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 
 import '../gallery.css';
-import { createApp } from '@lynx-js/vue-runtime';
+import { createApp } from 'vue-lynx';
 
 import Gallery from './Gallery.vue';
 

@@ -1,6 +1,6 @@
 import { pluginQRCode } from '@lynx-js/qrcode-rsbuild-plugin';
 import { defineConfig } from '@lynx-js/rspeedy';
-import { pluginVueLynx } from '@lynx-js/vue-rsbuild-plugin';
+import { pluginVueLynx } from 'vue-lynx/plugin';
 
 export default defineConfig({
   environments: {

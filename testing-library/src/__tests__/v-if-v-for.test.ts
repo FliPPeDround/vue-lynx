@@ -11,7 +11,7 @@ import {
   nextTick,
   Fragment,
   createCommentVNode,
-} from '@lynx-js/vue-runtime';
+} from 'vue-lynx';
 import { render } from '../index.js';
 
 describe('v-if (conditional rendering)', () => {

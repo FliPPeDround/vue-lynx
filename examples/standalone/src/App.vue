@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from '@lynx-js/vue-runtime'
+import { ref, onMounted } from 'vue-lynx'
 
 import './App.css'
 import arrow from './assets/arrow.png'

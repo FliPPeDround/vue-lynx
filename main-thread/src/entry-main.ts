@@ -5,7 +5,7 @@
 /**
  * Main Thread (Lepus) bootstrap entry.
  *
- * Injected by @lynx-js/vue-rsbuild-plugin as the sole content of the
+ * Injected by vue-lynx/plugin as the sole content of the
  * main-thread bundle.  Sets up:
  *   - globalThis.processData   – required by Lynx Lepus runtime (data processor)
  *   - globalThis.renderPage    – creates the Lynx page root (id=1)

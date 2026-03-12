@@ -19,7 +19,7 @@ import {
   h,
   onMounted,
   ref,
-} from '@lynx-js/vue-runtime';
+} from 'vue-lynx';
 
 const Counter = defineComponent({
   name: 'Counter',
