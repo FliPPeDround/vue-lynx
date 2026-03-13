@@ -11,6 +11,7 @@ export default defineConfig({
       'background-draggable': './src/background-draggable/index.ts',
       'main-thread-draggable': './src/main-thread-draggable/index.ts',
       'main-thread-draggable-raw': './src/main-thread-draggable-raw/index.ts',
+      'cross-thread-calls': './src/cross-thread-calls/index.ts',
     },
   },
   plugins: [
