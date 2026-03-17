@@ -272,8 +272,11 @@ export function patchProp(
     // which triggers the PAPI listener → publishEvent → user handler.
     if (papiKey && (el as any).eventMap?.[papiKey]) {
       const targetPapiKey = papiKey;
-      const forwarder = (() => {
-        el.dispatchEvent(new Event(targetPapiKey));
+      const forwarder = ((evt: Event) => {
+        const papiListener = (el as any).eventMap?.[targetPapiKey];
+        if (typeof papiListener === 'function') {
+          papiListener(evt);
+        }
       }) as EventListener;
 
       el.addEventListener(eventInfo.name, forwarder, {
@@ -283,6 +286,20 @@ export function patchProp(
       forwarders.set(key, forwarder);
     }
   }
+}
+
+// ---------------------------------------------------------------------------
+// patchEvent — thin wrapper for tests that import from modules/events
+// ---------------------------------------------------------------------------
+
+export function patchEvent(
+  el: Element,
+  rawName: string,
+  prevValue: unknown,
+  nextValue: unknown,
+  _instance?: unknown,
+): void {
+  patchProp(el, rawName, prevValue, nextValue);
 }
 
 // ---------------------------------------------------------------------------
@@ -341,9 +358,11 @@ export {
   vModelCheckbox,
   vModelSelect,
   vModelRadio,
-  withModifiers,
-  withKeys,
 } from 'vue-lynx';
+
+// withModifiers/withKeys: use the real @vue/runtime-dom implementations
+// (vue-lynx exports stubs that just return fn without applying modifiers)
+export { withModifiers, withKeys } from '@vue/runtime-dom';
 
 /**
  * Stub render() — Vue runtime-dom tests that call render(h(...), container)
