@@ -93,6 +93,12 @@ function rewriteRuntimeDomImportsPlugin() {
         `from '${bridgePath}'`,
       );
 
+      // '../../src/modules/events' → bridge (tests in __tests__/directives/)
+      result = result.replace(
+        /from\s+['"]\.\.\/\.\.\/src\/modules\/events['"]/g,
+        `from '${bridgePath}'`,
+      );
+
       // '../src' (runtime-dom entry) → bridge
       result = result.replace(
         /from\s+['"]\.\.\/src['"]/g,
@@ -128,6 +134,7 @@ const includedTests = [
   'patchEvents',
   'patchProps',
   'patchAttrs',
+  'directives/vOn',
 ].map((name) => `${testDir}/${name}.spec.ts`);
 
 // ---------------------------------------------------------------------------
