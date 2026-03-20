@@ -15,6 +15,37 @@ The example below demonstrates [`reactive()`](https://vuejs.org/api/reactivity-c
   defaultFile="src/App.vue"
 />
 
+## SFC CSS Features
+
+Plain `<style>` blocks, imported `.css` files, and [`<style module>`](https://vuejs.org/api/sfc-css-features.html#css-modules) all work on Lynx. `<style scoped>` and `v-bind()` in CSS are not yet supported — vote on [#78](https://github.com/Huxpro/vue-lynx/issues/78) and [#79](https://github.com/Huxpro/vue-lynx/issues/79) if you need them.
+
+:::details Feature support details
+
+| Feature | Status |
+|---------|--------|
+| `<style>` (plain) | Works |
+| Imported `.css` files | Works |
+| `<style module>` | Works |
+| `<style scoped>` | Upcoming ([#78](https://github.com/Huxpro/vue-lynx/issues/78)) |
+| `v-bind()` in `<style>` | Upcoming ([#79](https://github.com/Huxpro/vue-lynx/issues/79)) |
+
+For dynamic styling, use computed `:style` bindings as a workaround for `v-bind()`:
+```vue
+<script setup>
+const color = ref('#1565c0')
+const style = computed(() => ({ color: color.value }))
+</script>
+<template>
+  <text :style="style">Dynamic color</text>
+</template>
+```
+:::
+
+<Go
+  example="css-features"
+  defaultFile="src/App.vue"
+/>
+
 ## Component v-model
 
 Vue's `v-model` on components creates a two-way binding between parent and child. The child uses [`defineModel()`](https://vuejs.org/api/sfc-script-setup.html#definemodel) (Vue 3.4+) to declare a model prop, and the parent binds it with `v-model`.
