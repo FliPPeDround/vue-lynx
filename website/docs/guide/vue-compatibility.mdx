@@ -1,10 +1,14 @@
-# Vue Compatibility
+# Vue Features Compatibility
+
+:::tip
+This page gives a feature-by-feature overview of core Vue features on Lynx. For the mental model behind Vue Lynx's dual-thread architecture, read [Understanding the Dual-Thread Model](/guide/introduction#understanding-the-dual-thread-model).
+:::
 
 Because Vue Lynx is built on the official Vue 3 runtime core, it aims to support the full Vue 3 API surface out of the box. The core rendering path — Composition API, SFCs, reactivity, template directives — works the same way you'd expect from standard Vue.
 
 That said, Vue's API surface is large and we haven't had time to fully verify every corner of it. Below are critical Vue features that we've confirmed work effortlessly on Lynx — most require zero adaptation from a standard Vue codebase. Where Lynx-specific caveats exist, they are called out inline.
 
-## Reactivity: `reactive()` + `toRefs()` + Composables
+## Reactivity + Composables
 
 Vue Lynx reuses 100% of Vue's reactivity core (`@vue/reactivity`). Every reactivity API works identically to standard Vue, with no Lynx-specific caveats or adaptations.
 
@@ -134,12 +138,12 @@ The example below uses `defineComponent` with `data()`, `computed`, `watch`, `me
   defaultFile="src/App.vue"
 />
 
-{/* ## KeepAlive
+## Unsupported Features
 
-`<KeepAlive>` is **not supported** on Lynx. It requires an internal storage container created via `createElement('div')`, which produces an orphan native element with undefined behavior. Use manual state caching if you need component persistence.
-*/}
+Some Vue built-in features are not yet adapted to the dual-thread native environment:
 
-{/* ## Teleport
-
-`<Teleport>` is **not supported** on Lynx. It requires `querySelector` to resolve string targets, which is unavailable in the dual-thread architecture. Content will not be teleported.
-*/}
+| Feature | Reason | Alternative |
+|---------|--------|-------------|
+| `<KeepAlive>` | Requires an internal storage container (`createElement('div')`) with no native equivalent | Manual state caching |
+| `<Teleport>` | Requires `querySelector` to resolve string targets, unavailable in the dual-thread architecture | Conditional rendering at the target location |
+| `<Transition>` auto-duration | `getComputedStyle()` is unavailable on the background thread | Always pass an explicit `:duration` prop |
