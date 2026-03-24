@@ -1,6 +1,6 @@
 {
   "name": "vue-lynx-example-networking",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "Vue-Lynx networking demo with TanStack Query",
   "license": "Apache-2.0",
