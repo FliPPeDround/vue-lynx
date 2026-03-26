@@ -1,0 +1,12 @@
+{
+  "name": "vue-lynx-volar",
+  "version": "0.1.0",
+  "private": true,
+  "description": "vue-lynx volar plugin",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "build": "rslib build",
+    "dev": "rslib build --watch"
+  }
+}
