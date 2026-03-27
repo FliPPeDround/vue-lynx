@@ -1,8 +1,8 @@
 {
-  "name": "vue-lynx-volar",
+  "name": "vue-lynx-types",
   "version": "0.1.0",
   "private": true,
-  "description": "vue-lynx volar plugin",
+  "description": "vue-lynx types",
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {
