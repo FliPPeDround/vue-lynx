@@ -1,7 +1,7 @@
-type RenameBindToOn<T> = {
-  [P in keyof T as P extends `bind${infer Rest}` ? `on${Capitalize<Rest>}` : P]: T[P]
+type ExtractBindAsOn<T> = {
+  [P in keyof T as P extends `bind${infer Rest}` ? `on${Capitalize<Rest>}` : never]: T[P]
 }
 
 type NonBindProps<T> = Omit<T, `bind${string}` | 'className'>
 
-export type VueLynxProps<T> = RenameBindToOn<T> & NonBindProps<T>
+export type VueLynxProps<T> = ExtractBindAsOn<T> & NonBindProps<T>
