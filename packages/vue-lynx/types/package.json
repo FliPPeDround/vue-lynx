@@ -8,5 +8,8 @@
   "scripts": {
     "build": "rslib build",
     "dev": "rslib build --watch"
+  },
+  "dependencies": {
+    "@lynx-js/types": "workspace:*"
   }
 }
