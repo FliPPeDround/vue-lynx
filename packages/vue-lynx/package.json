@@ -47,9 +47,8 @@
       "default": "./types/dist/index.js"
     },
     "./types/volar-plugin": {
-      "types": "./types/dist/volar-plugin.d.ts",
-      "import": "./types/dist/volar-plugin.js",
-      "default": "./types/dist/volar-plugin.js"
+      "import": "./types/dist/volar-plugin.cjs",
+      "default": "./types/dist/volar-plugin.cjs"
     },
     "./package.json": "./package.json"
   },
